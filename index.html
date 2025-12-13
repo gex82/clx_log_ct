@@ -7,6 +7,26 @@
   </head>
   <body class="bg-slate-50 text-slate-900">
     <div id="root"></div>
+    <div id="boot-error" style="display:none; padding:16px; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;">
+      <h1 style="font-size:18px; font-weight:700; margin:0 0 8px;">Autopilot demo didn’t start</h1>
+      <p style="margin:0 0 10px;">This usually means the JavaScript bundle didn’t load (or the build output directory is misconfigured).</p>
+      <ul style="margin:0; padding-left:18px; line-height:1.5;">
+        <li>Cloudflare Pages: set <b>Build command</b> to <code>npm run build</code> and <b>Output directory</b> to <code>dist</code>.</li>
+        <li>Open DevTools Console/Network and look for a 404 on <code>/assets/*</code> or a MIME-type error.</li>
+        <li>If you deployed under a subpath, set <code>VITE_ROUTER_BASENAME</code> (see README).</li>
+      </ul>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // If the bundle fails to load, show a helpful message instead of a blank screen.
+      setTimeout(function () {
+        try {
+          if (!window.__AUTOPILOT_BOOTED__) {
+            var el = document.getElementById('boot-error');
+            if (el) el.style.display = 'block';
+          }
+        } catch (e) {}
+      }, 1800);
+    </script>
   </body>
 </html>
