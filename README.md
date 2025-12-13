@@ -48,6 +48,14 @@ npm run preview
 
 That’s it.
 
+### If you deploy under a sub-path
+
+Cloudflare Pages normally serves the project at the domain root (recommended). If you *do* serve it under a sub-path (rare on Pages, common on GitHub Pages), set a build-time env var:
+
+- `VITE_ROUTER_BASENAME=/your-subpath`
+
+This avoids React Router basename issues and keeps routing stable.
+
 ---
 
 ## Notes on realism
