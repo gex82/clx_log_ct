@@ -40,19 +40,18 @@ npm run preview
    - **Framework preset:** Vite
    - **Build command:** `npm run build`
    - **Output directory:** `dist`
-3. SPA routing is handled via `public/_redirects` (already included):
+3. That’s it.
 
-```
-/*    /index.html   200
-```
-
-That’s it.
+> Note: Cloudflare Pages already has built-in SPA fallback behavior when you do **not** include a top-level `404.html` (this repo does not). So you do **not** need a Netlify-style `_redirects` rule (and Cloudflare may warn about it).
 
 ### If you deploy under a sub-path
 
 Cloudflare Pages normally serves the project at the domain root (recommended). If you *do* serve it under a sub-path (rare on Pages, common on GitHub Pages), set a build-time env var:
 
 - `VITE_ROUTER_BASENAME=/your-subpath`
+ - `VITE_ROUTER_BASENAME=/your-subpath`
+
+You may also need to update `vite.config.ts` `base` to the same sub-path so static assets load on deep links.
 
 This avoids React Router basename issues and keeps routing stable.
 

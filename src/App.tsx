@@ -1,6 +1,7 @@
 import React from "react"
 import { Routes, Route } from "react-router-dom"
 import Layout from "./components/Layout"
+import BootMarker from "./components/BootMarker"
 import ControlTower from "./pages/ControlTower"
 import ExecutiveBrief from "./pages/ExecutiveBrief"
 import Network from "./pages/Network"
@@ -15,6 +16,7 @@ import GuidedDemo from "./pages/GuidedDemo"
 export default function App() {
   return (
     <Layout>
+      <BootMarker />
       <Routes>
         <Route path="/" element={<ControlTower />} />
         <Route path="/guided" element={<GuidedDemo />} />
